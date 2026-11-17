@@ -1,0 +1,8 @@
+// Fictional figures for UI demonstration. No visitor data is collected.
+const PTS_DATA={
+ daily:{visits:128,visitors:94,views:213,labels:['8 AM','10 AM','12 PM','2 PM','4 PM','6 PM'],trend:[12,22,19,31,26,18],devices:[62,29,9],pages:[['Home','/',78],['Services','/services',51],['New Patients','/new-patients',29],['Team','/team',24],['Contact','/contact',19],['Sports','/sports',12]]},
+ weekly:{visits:864,visitors:613,views:1438,labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],trend:[118,144,131,156,142,98,75],devices:[60,31,9],pages:[['Home','/',510],['Services','/services',341],['New Patients','/new-patients',219],['Team','/team',151],['Contact','/contact',131],['Sports','/sports',86]]},
+ monthly:{visits:3842,visitors:2651,views:6294,labels:['Week 1','Week 2','Week 3','Week 4'],trend:[821,934,1062,1025],devices:[58,34,8],pages:[['Home','/',2140],['Services','/services',1520],['New Patients','/new-patients',928],['Team','/team',703],['Contact','/contact',584],['Sports','/sports',419]]},
+ quarterly:{visits:11486,visitors:7984,views:18562,labels:['Month 1','Month 2','Month 3'],trend:[3460,3891,4135],devices:[61,31,8],pages:[['Home','/',6320],['Services','/services',4498],['New Patients','/new-patients',2871],['Team','/team',2100],['Contact','/contact',1690],['Sports','/sports',1083]]},
+ yearly:{visits:48620,visitors:33742,views:79341,labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],trend:[3200,3380,3650,3720,3890,4100,4320,4210,4460,4610,4730,4350],devices:[59,33,8],pages:[['Home','/',26900],['Services','/services',19100],['New Patients','/new-patients',12380],['Team','/team',9100],['Contact','/contact',7120],['Sports','/sports',4741]]}
+};
