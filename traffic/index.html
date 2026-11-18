@@ -1,1 +1,176 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173e4d"><title>Traffic trends | PTS Administration</title><link rel="stylesheet" href="../assets/css/style.css"></head><body class="dashboard-page"><div class="app-shell"><aside class="sidebar" id="sidebar"><a class="brand sidebar-brand" href="../dashboard/"><span class="brand-mark">PTS<span class="brand-mark-line"></span></span><span class="brand-name">Physical Therapy Services<small>Administration</small></span></a><div class="sidebar-caption">WORKSPACE</div><nav aria-label="Dashboard navigation"><a class="nav-item" href="../dashboard/"><span class="nav-icon">▦</span> Overview</a><a class="nav-item active" href="../traffic/" aria-current="page"><span class="nav-icon">⌁</span> Traffic trends</a><a class="nav-item" href="../performance/"><span class="nav-icon">▤</span> Page performance</a></nav><div class="sidebar-spacer"></div><div class="sidebar-caption">EXTERNAL</div><a class="nav-item" href="https://www.ptsclinic.com/" target="_blank" rel="noopener"><span class="nav-icon">↗</span> View website</a><button class="nav-item logout" id="logoutSide"><span class="nav-icon">⇥</span> Sign out</button><div class="sidebar-foot"><span class="status-dot"></span> Static demo <small>Sample data only</small></div></aside><div class="main-column"><header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><span class="crumb">Administration</span><span class="crumb-separator">/</span><strong>Traffic trends</strong></div><div class="topbar-right"><span class="topbar-site">ptsclinic.com</span><span class="avatar" aria-label="Demo administrator">AD</span></div></header><main class="dashboard-content"><div class="page-heading"><div><div class="eyebrow dark">WEBSITE PERFORMANCE</div><h1>Traffic trends</h1><p class="muted">Explore how sample website traffic changes over time.</p></div><div class="period-control"><label for="period">Reporting period</label><select id="period"><option value="daily">Today</option><option value="weekly">This week</option><option value="monthly" selected>This month</option><option value="quarterly">This quarter</option><option value="yearly">This year</option></select></div></div><div class="notice"><span class="notice-icon">i</span><span><strong>Demonstration data.</strong> Figures are predefined and do not represent actual PTS website activity.</span></div><section class="stats-grid" aria-label="Traffic trend metrics"><article class="stat-card"><div class="stat-label">Visits in period</div><div class="stat-value" id="trendVisits">—</div><div class="stat-note">Sum of chart intervals</div></article><article class="stat-card"><div class="stat-label">Highest interval</div><div class="stat-value" id="peakValue">—</div><div class="stat-note" id="peakLabel">—</div></article><article class="stat-card"><div class="stat-label">Lowest interval</div><div class="stat-value" id="lowValue">—</div><div class="stat-note" id="lowLabel">—</div></article><article class="stat-card"><div class="stat-label">First-to-last change</div><div class="stat-value" id="changeValue">—</div><div class="stat-note">Comparison of first and last intervals</div></article></section><section class="panel chart-panel trend-panel"><div class="panel-head"><div><h2>Visits over time</h2><p>Sample traffic for the selected period</p></div><span class="legend"><span class="legend-dot"></span> Visits</span></div><div class="chart-container" id="trafficChart" role="img" aria-label="Sample traffic trend line chart"></div><div class="chart-caption" id="chartCaption"></div></section><div class="trend-detail-grid"><section class="panel"><div class="panel-head"><div><h2>Interval breakdown</h2><p>Visits by time interval</p></div></div><div class="table-scroll"><table><thead><tr><th>Interval</th><th class="right">Visits</th><th class="right">Share</th></tr></thead><tbody id="intervalRows"></tbody></table></div></section><section class="panel"><div class="panel-head"><div><h2>Trend summary</h2><p>Based on the selected sample series</p></div></div><p class="trend-explanation" id="trendSummary">—</p><div class="trend-note">Changes describe fictional data and do not indicate actual PTS traffic.</div></section></div><footer class="dashboard-footer"><span>Physical Therapy Services · Eugene, Oregon</span><span>Static analytics prototype · All data is illustrative</span></footer></main></div></div><script src="../assets/js/local-routing.js"></script><script src="../assets/js/mock-data.js"></script><script src="../assets/js/traffic.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#173e4d" />
+    <title>Traffic trends | PTS Administration</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="dashboard-page">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand sidebar-brand" href="../dashboard/"
+          ><span class="brand-mark"
+            >PTS<span class="brand-mark-line"></span></span
+          ><span class="brand-name"
+            >Physical Therapy Services<small>Administration</small></span
+          ></a
+        >
+        <div class="sidebar-caption">WORKSPACE</div>
+        <nav aria-label="Dashboard navigation">
+          <a class="nav-item" href="../dashboard/"
+            ><span class="nav-icon">▦</span> Overview</a
+          ><a class="nav-item active" href="../traffic/" aria-current="page"
+            ><span class="nav-icon">⌁</span> Traffic trends</a
+          ><a class="nav-item" href="../performance/"
+            ><span class="nav-icon">▤</span> Page performance</a
+          >
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-caption">EXTERNAL</div>
+        <a
+          class="nav-item"
+          href="https://www.ptsclinic.com/"
+          target="_blank"
+          rel="noopener"
+          ><span class="nav-icon">↗</span> View website</a
+        ><button class="nav-item logout" id="logoutSide">
+          <span class="nav-icon">⇥</span> Sign out
+        </button>
+      </aside>
+      <div class="main-column">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+            >
+              ☰</button
+            ><span class="crumb">Administration</span
+            ><span class="crumb-separator">/</span
+            ><strong>Traffic trends</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="topbar-site">ptsclinic.com</span
+            ><span class="avatar" aria-label="Demo administrator">AD</span>
+          </div>
+        </header>
+        <main class="dashboard-content">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow dark">WEBSITE PERFORMANCE</div>
+              <h1>Traffic trends</h1>
+              <p class="muted">
+                Explore how sample website traffic changes over time.
+              </p>
+            </div>
+            <div class="period-control">
+              <label for="period">Reporting period</label
+              ><select id="period">
+                <option value="daily">Today</option>
+                <option value="weekly">This week</option>
+                <option value="monthly" selected>This month</option>
+                <option value="quarterly">This quarter</option>
+                <option value="yearly">This year</option>
+              </select>
+            </div>
+          </div>
+          <div class="notice">
+            <span class="notice-icon">i</span
+            ><span
+              ><strong>Demonstration data.</strong> Figures are predefined and
+              do not represent actual PTS website activity.</span
+            >
+          </div>
+          <section class="stats-grid" aria-label="Traffic trend metrics">
+            <article class="stat-card">
+              <div class="stat-label">Visits in period</div>
+              <div class="stat-value" id="trendVisits">—</div>
+              <div class="stat-note">Sum of chart intervals</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Highest interval</div>
+              <div class="stat-value" id="peakValue">—</div>
+              <div class="stat-note" id="peakLabel">—</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Lowest interval</div>
+              <div class="stat-value" id="lowValue">—</div>
+              <div class="stat-note" id="lowLabel">—</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">First-to-last change</div>
+              <div class="stat-value" id="changeValue">—</div>
+              <div class="stat-note">
+                Comparison of first and last intervals
+              </div>
+            </article>
+          </section>
+          <section class="panel chart-panel trend-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Visits over time</h2>
+                <p>Sample traffic for the selected period</p>
+              </div>
+              <span class="legend"
+                ><span class="legend-dot"></span> Visits</span
+              >
+            </div>
+            <div
+              class="chart-container"
+              id="trafficChart"
+              role="img"
+              aria-label="Sample traffic trend line chart"
+            ></div>
+            <div class="chart-caption" id="chartCaption"></div>
+          </section>
+          <div class="trend-detail-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Interval breakdown</h2>
+                  <p>Visits by time interval</p>
+                </div>
+              </div>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Interval</th>
+                      <th class="right">Visits</th>
+                      <th class="right">Share</th>
+                    </tr>
+                  </thead>
+                  <tbody id="intervalRows"></tbody>
+                </table>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Trend summary</h2>
+                  <p>Based on the selected sample series</p>
+                </div>
+              </div>
+              <p class="trend-explanation" id="trendSummary">—</p>
+              <div class="trend-note">
+                Changes describe fictional data and do not indicate actual PTS
+                traffic.
+              </div>
+            </section>
+          </div>
+          <footer class="dashboard-footer">
+            <span>Physical Therapy Services · Eugene, Oregon</span
+            ><span>Static analytics prototype · All data is illustrative</span>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/js/local-routing.js"></script>
+    <script src="../assets/js/mock-data.js"></script>
+    <script src="../assets/js/traffic.js"></script>
+  </body>
+</html>

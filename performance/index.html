@@ -1,1 +1,189 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173e4d"><title>Page performance | PTS Administration</title><link rel="stylesheet" href="../assets/css/style.css"></head><body class="dashboard-page"><div class="app-shell"><aside class="sidebar" id="sidebar"><a class="brand sidebar-brand" href="../dashboard/"><span class="brand-mark">PTS<span class="brand-mark-line"></span></span><span class="brand-name">Physical Therapy Services<small>Administration</small></span></a><div class="sidebar-caption">WORKSPACE</div><nav aria-label="Dashboard navigation"><a class="nav-item" href="../dashboard/"><span class="nav-icon">▦</span> Overview</a><a class="nav-item" href="../traffic/"><span class="nav-icon">⌁</span> Traffic trends</a><a class="nav-item active" href="../performance/" aria-current="page"><span class="nav-icon">▤</span> Page performance</a></nav><div class="sidebar-spacer"></div><div class="sidebar-caption">EXTERNAL</div><a class="nav-item" href="https://www.ptsclinic.com/" target="_blank" rel="noopener"><span class="nav-icon">↗</span> View website</a><button class="nav-item logout" id="logoutSide"><span class="nav-icon">⇥</span> Sign out</button><div class="sidebar-foot"><span class="status-dot"></span> Static demo <small>Sample data only</small></div></aside><div class="main-column"><header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><span class="crumb">Administration</span><span class="crumb-separator">/</span><strong>Page performance</strong></div><div class="topbar-right"><span class="topbar-site">ptsclinic.com</span><span class="avatar" aria-label="Demo administrator">AD</span></div></header><main class="dashboard-content"><div class="page-heading"><div><div class="eyebrow dark">PAGE ANALYTICS</div><h1>Page performance</h1><p class="muted">Compare the pages visitors view most.</p></div><div class="period-control"><label for="period">Reporting period</label><select id="period"><option value="daily">Today</option><option value="weekly">This week</option><option value="monthly" selected>This month</option><option value="quarterly">This quarter</option><option value="yearly">This year</option></select></div></div><div class="notice"><span class="notice-icon">i</span><span><strong>Demonstration data.</strong> Figures are predefined and do not represent actual PTS website activity.</span></div><section class="stats-grid" aria-label="Page performance summary"><article class="stat-card"><div class="stat-label">Tracked pages</div><div class="stat-value" id="trackedPages">—</div><div class="stat-note">Pages in this sample report</div></article><article class="stat-card"><div class="stat-label">Page views</div><div class="stat-value" id="totalViews">—</div><div class="stat-note">All sample page views</div></article><article class="stat-card"><div class="stat-label">Top page</div><div class="stat-value compact-value" id="leadingPage">—</div><div class="stat-note">Most viewed page</div></article><article class="stat-card"><div class="stat-label">Top-page share</div><div class="stat-value" id="topShare">—</div><div class="stat-note">Share of all page views</div></article></section><section class="panel"><div class="panel-head"><div><h2>Page view comparison</h2><p>Distribution of views across website pages</p></div><span class="small-tag">Sample report</span></div><div id="pageBars" class="page-bars" role="img" aria-label="Horizontal bars comparing page views"></div></section><section class="panel pages-panel"><div class="panel-head"><div><h2>Page details</h2><p>Page-level results for the selected period</p></div><label class="page-search-label" for="pageSearch">Find page <input id="pageSearch" type="search" placeholder="Search by name or path"></label></div><div class="table-scroll"><table><thead><tr><th>Rank</th><th>Page</th><th>Path</th><th class="right">Views</th><th class="right">Share</th></tr></thead><tbody id="pageRows"></tbody></table></div><p class="table-note" id="pageCount"></p></section><section class="panel"><div class="panel-head"><div><h2>Selected page</h2><p>Choose a page from the table to inspect its share of traffic</p></div></div><div class="page-detail"><div><span class="summary-kicker">Page</span><strong id="selectedName">—</strong><span class="muted" id="selectedPath">—</span></div><div><span class="summary-kicker">Page views</span><strong id="selectedViews">—</strong></div><div><span class="summary-kicker">Share of views</span><strong id="selectedShare">—</strong></div></div></section><footer class="dashboard-footer"><span>Physical Therapy Services · Eugene, Oregon</span><span>Static analytics prototype · All data is illustrative</span></footer></main></div></div><script src="../assets/js/local-routing.js"></script><script src="../assets/js/mock-data.js"></script><script src="../assets/js/pages.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#173e4d" />
+    <title>Page performance | PTS Administration</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="dashboard-page">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand sidebar-brand" href="../dashboard/"
+          ><span class="brand-mark"
+            >PTS<span class="brand-mark-line"></span></span
+          ><span class="brand-name"
+            >Physical Therapy Services<small>Administration</small></span
+          ></a
+        >
+        <div class="sidebar-caption">WORKSPACE</div>
+        <nav aria-label="Dashboard navigation">
+          <a class="nav-item" href="../dashboard/"
+            ><span class="nav-icon">▦</span> Overview</a
+          ><a class="nav-item" href="../traffic/"
+            ><span class="nav-icon">⌁</span> Traffic trends</a
+          ><a class="nav-item active" href="../performance/" aria-current="page"
+            ><span class="nav-icon">▤</span> Page performance</a
+          >
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-caption">EXTERNAL</div>
+        <a
+          class="nav-item"
+          href="https://www.ptsclinic.com/"
+          target="_blank"
+          rel="noopener"
+          ><span class="nav-icon">↗</span> View website</a
+        ><button class="nav-item logout" id="logoutSide">
+          <span class="nav-icon">⇥</span> Sign out
+        </button>
+      </aside>
+      <div class="main-column">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+            >
+              ☰</button
+            ><span class="crumb">Administration</span
+            ><span class="crumb-separator">/</span
+            ><strong>Page performance</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="topbar-site">ptsclinic.com</span
+            ><span class="avatar" aria-label="Demo administrator">AD</span>
+          </div>
+        </header>
+        <main class="dashboard-content">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow dark">PAGE ANALYTICS</div>
+              <h1>Page performance</h1>
+              <p class="muted">Compare the pages visitors view most.</p>
+            </div>
+            <div class="period-control">
+              <label for="period">Reporting period</label
+              ><select id="period">
+                <option value="daily">Today</option>
+                <option value="weekly">This week</option>
+                <option value="monthly" selected>This month</option>
+                <option value="quarterly">This quarter</option>
+                <option value="yearly">This year</option>
+              </select>
+            </div>
+          </div>
+          <div class="notice">
+            <span class="notice-icon">i</span
+            ><span
+              ><strong>Demonstration data.</strong> Figures are predefined and
+              do not represent actual PTS website activity.</span
+            >
+          </div>
+          <section class="stats-grid" aria-label="Page performance summary">
+            <article class="stat-card">
+              <div class="stat-label">Tracked pages</div>
+              <div class="stat-value" id="trackedPages">—</div>
+              <div class="stat-note">Pages in this sample report</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Page views</div>
+              <div class="stat-value" id="totalViews">—</div>
+              <div class="stat-note">All sample page views</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Top page</div>
+              <div class="stat-value compact-value" id="leadingPage">—</div>
+              <div class="stat-note">Most viewed page</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Top-page share</div>
+              <div class="stat-value" id="topShare">—</div>
+              <div class="stat-note">Share of all page views</div>
+            </article>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Page view comparison</h2>
+                <p>Distribution of views across website pages</p>
+              </div>
+              <span class="small-tag">Sample report</span>
+            </div>
+            <div
+              id="pageBars"
+              class="page-bars"
+              role="img"
+              aria-label="Horizontal bars comparing page views"
+            ></div>
+          </section>
+          <section class="panel pages-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Page details</h2>
+                <p>Page-level results for the selected period</p>
+              </div>
+              <label class="page-search-label" for="pageSearch"
+                >Find page
+                <input
+                  id="pageSearch"
+                  type="search"
+                  placeholder="Search by name or path"
+              /></label>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Page</th>
+                    <th>Path</th>
+                    <th class="right">Views</th>
+                    <th class="right">Share</th>
+                  </tr>
+                </thead>
+                <tbody id="pageRows"></tbody>
+              </table>
+            </div>
+            <p class="table-note" id="pageCount"></p>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Selected page</h2>
+                <p>
+                  Choose a page from the table to inspect its share of traffic
+                </p>
+              </div>
+            </div>
+            <div class="page-detail">
+              <div>
+                <span class="summary-kicker">Page</span
+                ><strong id="selectedName">—</strong
+                ><span class="muted" id="selectedPath">—</span>
+              </div>
+              <div>
+                <span class="summary-kicker">Page views</span
+                ><strong id="selectedViews">—</strong>
+              </div>
+              <div>
+                <span class="summary-kicker">Share of views</span
+                ><strong id="selectedShare">—</strong>
+              </div>
+            </div>
+          </section>
+          <footer class="dashboard-footer">
+            <span>Physical Therapy Services · Eugene, Oregon</span
+            ><span>Static analytics prototype · All data is illustrative</span>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/js/local-routing.js"></script>
+    <script src="../assets/js/mock-data.js"></script>
+    <script src="../assets/js/pages.js"></script>
+  </body>
+</html>
